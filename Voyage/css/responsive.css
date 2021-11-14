@@ -1,0 +1,46 @@
+@media screen and (max-width: 403px) {
+  .slider .text {
+    display: none;
+  }
+
+  .slider .must-name {
+    display: none;
+  }
+
+  .slider .restaurant-name {
+    display: none;
+  }
+
+  .slider .hotel-name {
+    display: none;
+  }
+
+  .slider .shop-name {
+    display: none;
+  }
+
+  .slider .event-name {
+    display: none;
+  }
+
+  .slider .typed-cursor {
+    display: none;
+  }
+
+  .freeimage {
+    display: none;
+  }
+
+  .slider a.btn1,
+  a.btn2 {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 295px) {
+  .service-wrap p {
+    font-size: 13px;
+  }
+}

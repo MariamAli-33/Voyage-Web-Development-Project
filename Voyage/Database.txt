@@ -1,0 +1,153 @@
+CREATE TABLE Person(
+    PersonID int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    CNIC varchar(255) CHECK (CNIC LIKE '[0-9]*5-[0-9]*7[0-9]'),
+    AddressID int NOT NULL,
+    Gender varchar(255),
+    Age int,
+    ContactNo varchar(255) CHECK (ContactNo LIKE '[0-9]*11'),
+    Email varchar(255) CHECK (Email Like '%@%'),
+    PRIMARY KEY(PersonID),
+    FOREIGN KEY(AddressID) REFERENCES Address(AddressID)
+);
+CREATE TABLE Address(
+    AddressID int NOT NULL AUTO_INCREMENT,
+    Country varchar(255) NOT NULL,
+    Province varchar(255),
+    City varchar(255), 
+    Street varchar(255),
+    HouseNO int,
+    PRIMARY KEY(AddressID)
+);
+CREATE TABLE Customer(
+    CustomerID int NOT NULL AUTO_INCREMENT,
+    PersonID int NOT NULL,
+    PRIMARY KEY(CustomerID),
+    FOREIGN KEY(PersonID) REFERENCES Person(PersonID)
+);
+CREATE TABLE Admin(
+    AdminID int NOT NULL AUTO_INCREMENT,
+    PersonID int NOT NULL,
+    PRIMARY KEY(AdminID),
+    FOREIGN KEY(PersonID) REFERENCES Person(PersonID)
+);
+CREATE TABLE TourGuide(
+    GuideID int NOT NULL AUTO_INCREMENT,
+    PersonID int NOT NULL,
+    No_of_tours_guided int,
+    Speciality_areas varchar(255),
+    Years_of_Experience int,
+    PRIMARY KEY(GuideID),
+    FOREIGN KEY(PersonID) REFERENCES Person(PersonID)
+);
+CREATE TABLE Attractions(
+    AttractionID int NOT NULL AUTO_INCREMENT,
+    Name Varchar(255) NOT NULL,
+    Information text,
+    PRIMARY KEY(AttractionID)
+);
+CREATE TABLE Location(
+    LocationID int NOT NULL AUTO_INCREMENT,
+    Country varchar(255) CHECK (Country='Pakistan'),
+    Province varchar(255),
+    Region varchar(255), 
+    Distance varchar(255),
+    Direction varchar(255),
+    PRIMARY KEY(LocationID)
+);
+CREATE TABLE Hotels(
+    HotelID int NOT NULL AUTO_INCREMENT,
+    LocationID int NOT NULL,
+    Name varchar(255) NOT NULL,
+    Rating varchar(255),
+    ReviewsID1 int NOT NULL,
+    ReviewsID2 int,
+    ReviewsID3 int,
+    No_of_Rooms int, 
+    Manager varchar(255),
+    One_night_stay_cost varchar(255),
+    Reason_of_Popularity varchar(255),
+    PRIMARY KEY(HotelID),
+    FOREIGN KEY(LocationID) REFERENCES Location(LocationID),
+    FOREIGN KEY(ReviewsID1) REFERENCES Reviews(ReviewsID),
+    FOREIGN KEY(ReviewsID2) REFERENCES Reviews(ReviewsID),
+    FOREIGN KEY(ReviewsID3) REFERENCES Reviews(ReviewsID)
+);
+CREATE TABLE CustomerReviews(
+    ReviewsID int NOT NULL AUTO_INCREMENT,
+    CustomerID int, 
+    Customer_Review text,
+    PRIMARY KEY(ReviewsID),
+    FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
+);
+CREATE TABLE AdminReviews(
+    ReviewsID int NOT NULL AUTO_INCREMENT,
+    AdminID int, 
+    Admin_Review text,
+    PRIMARY KEY(ReviewsID),
+    FOREIGN KEY(AdminID) REFERENCES Admin(AdminID)
+);
+CREATE TABLE GuideReviews(
+    ReviewsID int NOT NULL AUTO_INCREMENT,
+    GuideID int, 
+    Guide_Review text,
+    PRIMARY KEY(ReviewsID),
+    FOREIGN KEY(GuideID) REFERENCES TourGuide(GuideID)
+);
+CREATE TABLE Weather(
+    WeatherID int NOT NULL AUTO_INCREMENT,
+    weather text,
+    PRIMARY KEY(WeatherID)
+);
+CREATE TABLE Destinations(
+    DestinationID int NOT NULL AUTO_INCREMENT,
+    AttractionID int NOT NULL,
+    Name Varchar(255) NOT NULL,
+    LocationID int NOT NULL,
+    WeatherID int NOT NULL,
+    Information text,
+    Home_LanguageID int NOT NULL,
+    Suggestion text,
+    HotelID1 int NOT NULL,
+    HotelID2 int,
+    HotelID3 int,
+    Picture BLOB;
+    PRIMARY KEY(DestinationID),
+    FOREIGN KEY(LocationID) REFERENCES Location(LocationID),
+    FOREIGN KEY(AttractionID) REFERENCES Attractions(AttractionID),
+    FOREIGN KEY(WeatherID) REFERENCES Weather(WeatherID),
+    FOREIGN KEY(Home_LanguageID) REFERENCES Languages(LanguageID),
+    FOREIGN KEY(HotelID1) REFERENCES Hotel(HotelID),
+    FOREIGN KEY(HotelID2) REFERENCES Hotel(HotelID),
+    FOREIGN KEY(HotelID3) REFERENCES Hotel(HotelID)
+);
+CREATE TABLE Languages(
+    LanguageID int NOT NULL AUTO_INCREMENT,
+    Name varchar(255),
+    Specification text,
+    PRIMARY KEY(LanguageID)
+);
+CREATE TABLE Reservations(
+    ReservationID int NOT NULL AUTO_INCREMENT,
+    CustomerID int NOT NULL,
+    DestinationID int NOT NULL,
+    Reserved_From Date,
+    Reserved_to Date,
+    GuideID int Not Null,
+    Reserved_Hotel_ID int NOT NULL,
+    Cost_of_Tour varchar(255),
+    Payment_Status varchar(255) CHECK (Payment='Pending' or Payment='Completed'),
+    PRIMARY KEY(ReservationID),
+    FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+    FOREIGN KEY(GuideID) REFERENCES TourGuide(GuideID),
+    FOREIGN KEY(Reserved_Hotel_ID) REFERENCES Hotel(HotelID)
+);
+CREATE TABLE Userinfo(
+    UserID int NOT NULL AUTO_INCREMENT,
+    PersonID int NOT NULL,
+    UserName varchar(255),
+    pass varchar(20),
+    PRIMARY KEY(UserID),
+ FOREIGN KEY(PersonID) REFERENCES Person(PersonID)
+);

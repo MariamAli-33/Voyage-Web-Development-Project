@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Staatliches&display=swap');
+
+body {
+  font-size: .875rem;
+
+}
+
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+   * Sidebar
+   */
+
+.sidebar {
+  position: fixed;
+  font-size: 20px;
+  top: 15px;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  font-family: 'Balsamiq Sans', cursive;
+
+  /* Behind the navbar */
+  padding: 48px 0 0;
+  /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(255, 0, 0, 0.1);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #ca213d;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+/*
+   * Navbar
+   */
+
+
+.navbar-brand {
+  padding-top: 25px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-family: 'Balsamiq Sans', cursive;
+  background-color: rgb(235, 52, 83);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar {
+  font-family: 'Balsamiq Sans', cursive;
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+
+}
+
+.form-control-dark {
+
+  background-color: rgba(233, 193, 193, 0.336);
+  border-color: rgba(255, 255, 255, 0.993);
+
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+/* Breadcrumbs */
+
+.breadcrumb .breadcrumb-item a {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.breadcrumb .breadcrumb-item {
+  font-size: 17px;
+  color: rgb(235, 52, 83);
+  font-weight: bold;
+
+}
+
+
+/* Main Box Styling */
+#mainBoxHeading {
+  font-size: 27px;
+  font-family: 'Balsamiq Sans', cursive;
+  font-weight: bold;
+  color: rgb(235, 52, 83);
+}
+
+#mainSubs h4,
+a {
+  font-size: 22px;
+  font-family: 'Balsamiq Sans', cursive;
+  padding-bottom: 10px;
+  font-weight: bold;
+  color: black;
+}
+
+#mainSubs {
+  font-size: 16px;
+  font-family: 'Balsamiq Sans', cursive;
+
+}
+
+#mainSubs p {
+  font-size: 15px;
+  font-family: 'Balsamiq Sans', cursive;
+
+}
+
+
+
+
+/* For Agent Lists */
+#agent_list img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+
+}
+
+/* Profile Information  */
+
+
+ul.information {
+  list-style: none;
+  color: rgb(0, 0, 0);
+  padding: 0;
+}
+
+.card-title {
+  font-size: 27px;
+}
+
+.card-description span {
+  font-size: 20px;
+}
+
+li.infoItems {
+  margin: 10px;
+  font-size: 0.9rem;
+  font-family: 'Balsamiq Sans', cursive;
+  /* font-weight: 400; */
+}
+
+li.infoItems i {
+  color: #11254bec;
+}
+
+span.infoItemsLabel {
+  width: 100px;
+  display: inline-flex;
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+span.infoItemsDes {
+  display: inline-flex;
+  font-size: 16px;
+  width: calc(100% - 160px);
+}
+
+
+/* Reservation Form */
+#reservationForm {
+  margin: 50px 300px;
+  padding: 50px;
+}
+
+#reservationForm h4 {
+  padding-left: 200px;
+  margin-bottom: 10px;
+}
