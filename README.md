@@ -8,3 +8,4 @@ Voyage, is a “travel-guide” website, allowing the curious tourists to the vi
 - Jquery
 - Javascript
 - Bootstrap 4.0 
+- PHP
